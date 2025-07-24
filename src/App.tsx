@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './contexts/AuthContext';
 
 // Components
 import Header from './components/Header';
@@ -17,18 +16,8 @@ import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
 import LoadingAnimation from './components/LoadingAnimation';
 
-// Blog Components
-import BlogList from './components/BlogList';
-import BlogPost from './components/BlogPost';
-
 // About Us Component
 import AboutUs from './components/AboutUs';
-
-// Admin Components
-import Login from './components/Login';
-import Dashboard from './components/admin/Dashboard';
-import PostEditor from './components/admin/PostEditor';
-import ProtectedRoute from './components/ProtectedRoute';
 
 type Language = 'en' | 'uk' | 'ru';
 
@@ -91,66 +80,35 @@ function App() {
   }
 
   return (
-    <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-white">
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#002c5f',
+              color: '#fff',
+            },
+            success: {
               style: {
-                background: '#002c5f',
-                color: '#fff',
+                background: '#c19d53',
+                color: '#002c5f',
               },
-              success: {
-                style: {
-                  background: '#c19d53',
-                  color: '#002c5f',
-                },
-              },
-            }}
+            },
+          }}
+        />
+        
+        <Routes>
+          {/* Public Routes */}
+          <Route 
+            path="/" 
+            element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />} 
           />
-          
-          <Routes>
-            {/* Public Routes */}
-            <Route 
-              path="/" 
-              element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />} 
-            />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/blog" element={<BlogList />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin/login" element={<Login />} />
-            <Route 
-              path="/admin/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/admin/posts/new" 
-              element={
-                <ProtectedRoute>
-                  <PostEditor />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/admin/posts/edit/:id" 
-              element={
-                <ProtectedRoute>
-                  <PostEditor />
-                </ProtectedRoute>
-              } 
-            />
-          </Routes>
-        </div>
-      </Router>
-    </AuthProvider>
+          <Route path="/about-us" element={<AboutUs />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
