@@ -1,0 +1,193 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { ArrowLeft, Mail, Phone, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+const AboutUs: React.FC = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
+
+  const teamMembers = [
+    {
+      name: "Yuliya Balina",
+      title: "Founder & RCIC",
+      description: "With over 19 years of hands-on experience and license #R506278, Yuliya turned her own immigrant journey into a mission: empowering skilled professionals and families to build their futures in Canada. Fluent in English, Ukrainian, and Russian, she leads RAC Immigration with expertise, empathy, and integrity.",
+      image: "/image/RAC.jpg" // Using existing image
+    },
+    {
+      name: "Oleksii Dzhura",
+      title: "Assistant to the Consultant",
+      description: "Since 2017, Oleksii has steered our clients through their very first steps toward Canada. He excels at breaking down complex immigration topics into clear, simple guidance so every applicant feels confident from day one.",
+      image: "https://i.ibb.co/5xF5bx6w/Oleksii-Dzhura.jpg" // Oleksii's photo
+    },
+    {
+      name: "Mykola Galiniak",
+      title: "Co-Founder & CCO, MV Group",
+      description: "With a Master's in Marketing and immigration experience since 2012, Mykola built MV Group's recruitment and language-training arms. He's helped thousands of Ukrainians secure Canadian employer connections and excel on their CELPIP & IELTS exams.",
+      image: "https://i.ibb.co/w3wkzw7/Mykola-Galiniak.jpg" // Mykola's photo
+    },
+    {
+      name: "Vita Galiniak (Shubert)",
+      title: "Immigration Case Specialist & Co-Founder, MV Group",
+      description: "A seasoned consultant since 2006 and philology graduate, Vita brings unmatched expertise in work, study, visitor, PR, and citizenship applications. Partnering with Yuliya since 2006, she's driven by integrity and a passion for client success.",
+      image: "https://i.ibb.co/PZ5wgL7g/Vita-Galiniak-1.jpg"
+    },
+    {
+      name: "Tetiana Fallaha",
+      title: "Immigration Specialist",
+      description: "Description coming soon - please provide Tetiana's professional background and expertise details.",
+      image: "https://i.ibb.co/KcTf28VJ/Tetiana-Fallaha-1.jpg"
+    },
+    {
+      name: "Arlene Joy \"AJ\" Garcia",
+      title: "Philippines-Based Immigration Agent",
+      description: "A former PR strategist and operations manager for Philippine recruitment, AJ has 20+ years of global staffing and visa-processing experience. Since 2017 she's guided Filipino clients—through empathy and precision—toward their Canadian work, study, and family-reunification goals.",
+      image: "https://i.ibb.co/MyPMFNDH/Aj-Photo-2.jpg"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="bg-navy-primary text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center text-gold-primary hover:text-white transition-colors mb-6"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Back to Home
+          </button>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              Meet Our Team
+            </h1>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              Our experienced professionals are dedicated to making your Canadian immigration journey successful and stress-free.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Team Members */}
+      <section ref={ref} className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-16">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${
+                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                }`}
+              >
+                {/* Image */}
+                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                  <div className="relative w-80 h-80 mx-auto lg:mx-0">
+                    {member.image ? (
+                      <>
+                        {/* Gold Frame */}
+                        <div className="absolute inset-0 border-8 border-gold-primary rounded-full shadow-2xl"></div>
+                        
+                        {/* Portrait Image */}
+                        <div className="absolute inset-2 rounded-full overflow-hidden">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      /* Placeholder */
+                      <div className="w-full h-full border-8 border-gold-primary rounded-full bg-gray-100 flex items-center justify-center shadow-2xl">
+                        <div className="text-center text-gray-500">
+                          <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                          <p className="text-sm font-medium">Photo Coming Soon</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Professional Badge */}
+                    <div className="absolute -top-4 -right-4 bg-gold-primary text-navy-primary px-3 py-2 rounded-lg text-xs font-bold transform rotate-12 shadow-lg">
+                      EXPERT
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-navy-primary mb-2">
+                      {member.name}
+                    </h2>
+                    <h3 className="text-xl font-semibold text-gold-primary mb-6">
+                      {member.title}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      {member.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-navy-primary text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Ready to Start Your Journey?
+            </h2>
+            <p className="text-xl text-white/80 mb-8 leading-relaxed">
+              Our team is here to guide you every step of the way. Contact us today for your free consultation.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-gold-primary" />
+                <span>info@racimmigration.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-gold-primary" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-5 h-5 text-gold-primary" />
+                <span>Toronto, Ontario</span>
+              </div>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gold-primary text-navy-primary px-8 py-4 rounded-lg font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300"
+            >
+              Schedule Your Free Consultation
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default AboutUs;
