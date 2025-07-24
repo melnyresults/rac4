@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
+import { BlogProvider, useBlog } from './contexts/BlogContext';
 
 // Components
 import Header from './components/Header';
@@ -15,6 +16,10 @@ import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
 import LoadingAnimation from './components/LoadingAnimation';
+import BlogList from './components/BlogList';
+import BlogPost from './components/BlogPost';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 // About Us Component
 import AboutUs from './components/AboutUs';
@@ -62,6 +67,12 @@ const HomePage: React.FC<{ currentLanguage: Language; setCurrentLanguage: (lang:
   );
 };
 
+// Admin Route Component
+const AdminRoute: React.FC = () => {
+  const { isAdmin } = useBlog();
+  return isAdmin ? <AdminDashboard /> : <AdminLogin />;
+};
+
 function App() {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
   const [isLoading, setIsLoading] = useState(true);
@@ -80,35 +91,42 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="min-h-screen bg-white">
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#002c5f',
-              color: '#fff',
-            },
-            success: {
+    <BlogProvider>
+      <Router>
+        <div className="min-h-screen bg-white">
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
               style: {
-                background: '#c19d53',
-                color: '#002c5f',
+                background: '#002c5f',
+                color: '#fff',
               },
-            },
-          }}
-        />
-        
-        <Routes>
-          {/* Public Routes */}
-          <Route 
-            path="/" 
-            element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />} 
+              success: {
+                style: {
+                  background: '#c19d53',
+                  color: '#002c5f',
+                },
+              },
+            }}
           />
-          <Route path="/about-us" element={<AboutUs />} />
-        </Routes>
-      </div>
-    </Router>
+          
+          <Routes>
+            {/* Public Routes */}
+            <Route 
+              path="/" 
+              element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />} 
+            />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminRoute />} />
+          </Routes>
+        </div>
+      </Router>
+    </BlogProvider>
   );
 }
 
