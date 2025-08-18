@@ -17,8 +17,8 @@ const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://img1.wsimg.com/isteam/stock/rbwy9A/:/rs=w:984,h:757"
-          alt="Professional woman"
+          src="https://i.ibb.co/xScWhCGT/shutterstock-2486520637-1.png"
+          alt="Canadian immigration background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-navy-primary/70"></div>
