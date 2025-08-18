@@ -38,7 +38,7 @@ const AboutUs: React.FC = () => {
     {
       name: "Tetiana Fallaha",
       title: "Immigration Specialist",
-      description: "Description coming soon - please provide Tetiana's professional background and expertise details.",
+      description: "Since 2007, Tetiana has specialized in ESL instruction and immigration support, helping skilled workers bridge language barriers for Canadian success. A certified CLB assessor with Master's degrees in Linguistics and Management, she leads MV Group Language Academy, preparing newcomers for IRCC-accepted English tests. With 16+ years of experience, she creates tailored programs for trades professionals—from welders to CNC operators—ensuring they meet both language and immigration requirements.",
       image: "https://i.ibb.co/KcTf28VJ/Tetiana-Fallaha-1.jpg"
     },
     {
