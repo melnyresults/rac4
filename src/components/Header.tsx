@@ -144,6 +144,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
                 }`}
               >
                   {lang.name}
+              </motion.button>
             ))}
           </div>
 
