@@ -143,9 +143,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
                     : 'text-white hover:text-gold-primary'
                 }`}
               >
-                <div className={`w-5 h-4 mr-2 rounded-sm overflow-hidden flex-shrink-0 flag-${lang.flag.toLowerCase()}`}></div>
-                <span className="text-sm font-medium">{lang.name}</span>
-              </motion.button>
+                  {lang.name}
             ))}
           </div>
 
