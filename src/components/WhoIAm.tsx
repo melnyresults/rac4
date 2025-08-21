@@ -29,39 +29,9 @@ const WhoIAm: React.FC<WhoIAmProps> = ({ currentLanguage }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Portrait */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="relative w-80 h-80 lg:w-[560px] lg:h-[560px] mx-auto lg:mx-0">
-              {/* Gold Frame */}
-              <div className="absolute inset-0 border-8 border-gold-primary rounded-full shadow-2xl"></div>
-              
-              {/* Portrait Image */}
-              <div className="absolute inset-2 rounded-full overflow-hidden">
-                <img
-                  src="/image/RAC.jpg"
-                  alt="Yuliya Balina"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Passport Stamps */}
-              <div className="absolute -top-4 -right-4 bg-gold-primary text-navy-primary px-3 py-2 rounded-lg text-xs font-bold transform rotate-12 shadow-lg">
-                EXPERT
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-navy-primary text-gold-primary px-3 py-2 rounded-lg text-xs font-bold transform -rotate-12 shadow-lg">
-                TRUSTED
-              </div>
-            </div>
-          </motion.div>
-
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
@@ -111,6 +81,36 @@ const WhoIAm: React.FC<WhoIAmProps> = ({ currentLanguage }) => {
                   <div className="text-sm text-gray-600 font-medium">{t.whoIAm.stats.clients}</div>
                 </div>
               </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Portrait */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative w-80 h-80 lg:w-[560px] lg:h-[560px] mx-auto lg:mx-0">
+              {/* Gold Frame */}
+              <div className="absolute inset-0 border-8 border-gold-primary rounded-full shadow-2xl"></div>
+              
+              {/* Portrait Image */}
+              <div className="absolute inset-2 rounded-full overflow-hidden">
+                <img
+                  src="/image/RAC.jpg"
+                  alt="Yuliya Balina"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Passport Stamps */}
+              <div className="absolute -top-4 -right-4 bg-gold-primary text-navy-primary px-3 py-2 rounded-lg text-xs font-bold transform rotate-12 shadow-lg">
+                EXPERT
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-navy-primary text-gold-primary px-3 py-2 rounded-lg text-xs font-bold transform -rotate-12 shadow-lg">
+                TRUSTED
+              </div>
             </div>
           </motion.div>
         </div>
