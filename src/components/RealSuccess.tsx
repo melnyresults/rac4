@@ -40,13 +40,15 @@ const RealSuccess: React.FC<RealSuccessProps> = ({ currentLanguage }) => {
   };
 
   return (
-    <section id="testimonials" ref={ref} className="py-20 bg-gradient-to-br from-navy-primary to-navy-secondary relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="w-full h-full" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c19d53' fill-opacity='0.3'%3E%3Cpolygon points='50 0 60 40 100 50 60 60 50 100 40 60 0 50 40 40'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '100px 100px'
-        }}></div>
+    <section id="testimonials" ref={ref} className="py-20 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://i.ibb.co/6c1bRPfg/shutterstock-354616754.jpg"
+          alt="Success stories background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-primary/85 to-navy-secondary/85"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
