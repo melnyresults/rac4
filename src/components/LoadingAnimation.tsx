@@ -27,7 +27,8 @@ const LoadingAnimation: React.FC = () => {
             <img
               src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
               alt="RAC Immigration Logo"
-              className="w-full h-full object-contain scale-110"
+              className="w-full h-full object-contain scale-200
+            "
             />
           </motion.div>
         </div>
