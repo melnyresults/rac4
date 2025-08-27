@@ -22,11 +22,12 @@ const LoadingAnimation: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
+            className="w-full h-full"
           >
             <img
               src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
               alt="RAC Immigration Logo"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain scale-110"
             />
           </motion.div>
         </div>
