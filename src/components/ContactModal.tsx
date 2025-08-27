@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, MapPin, Send } from 'lucide-react';
+import { X, User, MapPin, Send, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface ContactModalProps {
