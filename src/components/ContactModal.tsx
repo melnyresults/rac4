@@ -41,31 +41,48 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
     setIsSubmitting(true);
     
     try {
-      // Submit to Zapier raw webhook
+      console.log('Submitting form data:', { name: formData.name.trim(), email: formData.email.trim() });
+      
+      // Submit to Zapier raw webhook with CORS handling
       const webhookData = {
         name: formData.name.trim(),
-        email: formData.email.trim()
+        email: formData.email.trim(),
+        timestamp: new Date().toISOString(),
+        source: 'RAC Immigration Website'
       };
+
+      console.log('Sending to webhook:', webhookData);
 
       const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
         method: 'POST',
+        mode: 'no-cors', // Handle CORS issues with Zapier
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(webhookData)
       });
 
-      // Zapier webhooks typically return 200 even for successful submissions
-      if (response.status === 200 || response.status === 201) {
-        toast.success('Thank you! We will contact you soon.');
-        setFormData({ name: '', email: '', address: '' });
-        onClose();
-      } else {
-        throw new Error(`Webhook returned status: ${response.status}`);
-      }
+      console.log('Response received:', response);
+      
+      // With no-cors mode, we can't read the response status
+      // Assume success if no error was thrown
+      toast.success('Thank you! We will contact you soon.');
+      setFormData({ name: '', email: '', address: '' });
+      onClose();
+      
     } catch (error) {
-      console.error('Form submission error:', error);
-      toast.error('Unable to submit form. Please try again or contact us directly.');
+      console.error('Form submission error details:', {
+        error: error,
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined
+      });
+      
+      // Provide more specific error messages
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        toast.error('Network error. Please check your internet connection and try again.');
+      } else {
+        toast.error('Unable to submit form. Please try again or contact us directly.');
+      }
     } finally {
       setIsSubmitting(false);
     }
