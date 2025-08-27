@@ -95,9 +95,11 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-10 bg-gold-primary rounded-full flex items-center justify-center border-2 border-white">
-                <span className="text-navy-primary font-bold text-sm">RAC</span>
-              </div>
+              <img
+                src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
+                alt="RAC Immigration Logo"
+                className="h-10 w-auto"
+              />
               <div className="text-white">
                 <div className="font-bold text-lg leading-tight">RAC Immigration Services</div>
                 <div className="text-xs text-gold-primary">RCIC #R506278</div>

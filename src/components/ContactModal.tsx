@@ -99,11 +99,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
                 </label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
-                  <textarea
+                  <input
+                    type="text"
                     value={formData.address}
                     onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
-                    rows={3}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent resize-none"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent"
                     placeholder="Enter your current address"
                     required
                   />

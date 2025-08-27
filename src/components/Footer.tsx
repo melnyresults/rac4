@@ -32,9 +32,11 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gold-primary rounded-full flex items-center justify-center">
-                <span className="text-navy-primary font-bold">RAC</span>
-              </div>
+              <img
+                src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
+                alt="RAC Immigration Logo"
+                className="h-12 w-auto"
+              />
               <div>
                 <div className="font-bold text-lg">RAC Immigration</div>
                 <div className="text-gold-primary text-sm">RCIC #R506278</div>
