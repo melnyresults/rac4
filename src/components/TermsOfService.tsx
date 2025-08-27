@@ -8,6 +8,11 @@ const TermsOfService: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <title>Terms of Service - RAC Immigration Services</title>
+      <meta name="description" content="Terms of service for RAC Immigration Services. Professional immigration consulting terms and conditions for Canadian immigration services." />
+      <meta name="robots" content="index, follow" />
+
       {/* Header */}
       <div className="bg-navy-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

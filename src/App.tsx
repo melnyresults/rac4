@@ -28,6 +28,31 @@ import AboutUs from './components/AboutUs';
 
 type Language = 'en' | 'uk' | 'ru';
 
+// SEO Component for dynamic meta tags
+const SEOHead: React.FC<{ title?: string; description?: string; keywords?: string }> = ({ 
+  title = "RAC Immigration - Yuliya Balina | Making Immigration Human Again",
+  description = "Certified immigration consultant Yuliya Balina with 19+ years of experience helping skilled professionals immigrate to Canada. RCIC #R506278. Free consultation available.",
+  keywords = "immigration canada, immigration consultant, RCIC, express entry, provincial nominee, work visa, study visa, permanent residence"
+}) => {
+  React.useEffect(() => {
+    document.title = title;
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    }
+    
+    // Update meta keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', keywords);
+    }
+  }, [title, description, keywords]);
+  
+  return null;
+};
+
 // Home Page Component
 const HomePage: React.FC<{ currentLanguage: Language; setCurrentLanguage: (lang: Language) => void }> = ({ currentLanguage, setCurrentLanguage }) => {
   const [showStickyCTA, setShowStickyCTA] = useState(false);
@@ -44,6 +69,7 @@ const HomePage: React.FC<{ currentLanguage: Language; setCurrentLanguage: (lang:
 
   return (
     <>
+      <SEOHead />
       <Header currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
       
       <motion.main

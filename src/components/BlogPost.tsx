@@ -89,6 +89,16 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <title>{post.title} - RAC Immigration Blog</title>
+      <meta name="description" content={post.excerpt} />
+      <meta name="keywords" content={post.tags.join(', ')} />
+      <meta name="author" content={post.author} />
+      <meta property="og:title" content={post.title} />
+      <meta property="og:description" content={post.excerpt} />
+      <meta property="og:type" content="article" />
+      {post.featuredImage && <meta property="og:image" content={post.featuredImage} />}
+
       {/* Header */}
       <div className="bg-navy-primary text-white py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

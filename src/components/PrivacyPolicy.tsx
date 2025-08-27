@@ -8,6 +8,11 @@ const PrivacyPolicy: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <title>Privacy Policy - RAC Immigration Services</title>
+      <meta name="description" content="Privacy policy for RAC Immigration Services. Learn how we protect your personal information and data during the immigration process." />
+      <meta name="robots" content="index, follow" />
+
       {/* Header */}
       <div className="bg-navy-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

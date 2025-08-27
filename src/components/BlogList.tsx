@@ -34,6 +34,10 @@ const BlogList: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <title>Immigration Blog - RAC Immigration Services</title>
+      <meta name="description" content="Expert immigration insights, updates, and guidance for your Canadian immigration journey. Latest news on Express Entry, PNP, and more." />
+
       {/* Header */}
       <div className="bg-navy-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

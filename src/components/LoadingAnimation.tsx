@@ -17,14 +17,17 @@ const LoadingAnimation: React.FC = () => {
         }}
         className="relative"
       >
-        <div className="w-32 h-32 rounded-full border-4 border-gold-primary bg-white flex items-center justify-center shadow-2xl">
+        <div className="w-40 h-40 rounded-full border-4 border-gold-primary bg-white flex items-center justify-center shadow-2xl p-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
-            className="text-navy-primary text-2xl font-bold"
           >
-            RAC
+            <img
+              src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
+              alt="RAC Immigration Logo"
+              className="w-full h-full object-contain"
+            />
           </motion.div>
         </div>
         

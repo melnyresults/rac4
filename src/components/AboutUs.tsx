@@ -194,24 +194,18 @@ const AboutUs: React.FC = () => {
         </div>
       </motion.header>
 
+      {/* SEO Meta Tags */}
+      <title>About Our Team - RAC Immigration Services</title>
+      <meta name="description" content="Meet our experienced immigration team led by Yuliya Balina (RCIC #R506278). 19+ years helping skilled professionals immigrate to Canada." />
+
       {/* Header */}
-      <div className="bg-navy-primary text-white py-16 relative overflow-hidden mt-16">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="https://i.ibb.co/Fk2c3x78/on-arrival-visas-post.jpg"
-            alt="Immigration services background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-navy-primary/85"></div>
-        </div>
-        
+      <div className="bg-navy-primary text-white py-16 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center relative z-10"
+            className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">
               Meet Our Team
@@ -224,8 +218,19 @@ const AboutUs: React.FC = () => {
       </div>
 
       {/* Team Members */}
-      <section ref={ref} className="py-20">
+      <section ref={ref} className="py-20 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://i.ibb.co/Fk2c3x78/on-arrival-visas-post.jpg"
+            alt="Immigration services background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/90"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10">
           <div className="space-y-16">
             {teamMembers.map((member, index) => (
               <motion.div
@@ -289,6 +294,7 @@ const AboutUs: React.FC = () => {
             ))}
           </div>
         </div>
+          </div>
       </section>
 
       {/* Contact Section */}
