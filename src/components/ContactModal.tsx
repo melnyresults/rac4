@@ -70,6 +70,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
       setFormData({ name: '', email: '', address: '' });
       onClose();
       
+      // Redirect to thank you page
+      setTimeout(() => {
+        window.location.href = '/thanks';
+      }, 1000);
+      
     } catch (error) {
       console.error('Form submission error details:', {
         error: error,
