@@ -39,8 +39,8 @@ const LoadingAnimation: React.FC = () => {
         >
           R506278
         </motion.div>
-      </motion.div>
       </div>
+      </motion.div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -56,5 +56,3 @@ const LoadingAnimation: React.FC = () => {
 };
 
 export default LoadingAnimation;
-  )
-}
