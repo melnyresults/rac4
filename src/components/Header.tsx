@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
               <img
                 src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
                 alt="RAC Immigration Logo"
-                className="h-14 w-auto"
+                className="h-28 w-auto"
               />
               <div className="text-white">
                 <div className="font-bold text-lg leading-tight">RAC Immigration Services</div>

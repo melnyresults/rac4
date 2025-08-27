@@ -157,7 +157,7 @@ const AboutUs: React.FC = () => {
               <div className="py-4 space-y-4">
                 {navItems.map((item) => (
                   <a
-                    key={item.key}
+                className="h-28 w-auto"
                     href={item.href}
                     className={`block transition-colors font-medium px-4 py-2 ${
                       item.key === 'about'

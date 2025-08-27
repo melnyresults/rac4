@@ -17,7 +17,7 @@ const LoadingAnimation: React.FC = () => {
         }}
         className="relative"
       >
-        <div className="w-56 h-56 rounded-full border-4 border-gold-primary bg-white flex items-center justify-center shadow-2xl p-6">
+        <div className="w-80 h-80 rounded-full border-4 border-gold-primary bg-white flex items-center justify-center shadow-2xl p-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -27,7 +27,7 @@ const LoadingAnimation: React.FC = () => {
             <img
               src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
               alt="RAC Immigration Logo"
-              className="w-full h-full object-contain scale-110"
+              className="w-full h-full object-contain scale-150"
             />
           </motion.div>
         </div>
