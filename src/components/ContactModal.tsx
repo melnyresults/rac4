@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, MapPin, Send, Mail } from 'lucide-react';
+import { X, User, Phone, Send, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface ContactModalProps {
@@ -13,7 +13,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    address: ''
+    phone: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -23,12 +23,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
     return emailRegex.test(email);
   };
 
-  const isFormValid = formData.name.trim() && formData.email.trim() && isValidEmail(formData.email);
+  const isFormValid = formData.name.trim() && formData.email.trim() && isValidEmail(formData.email) && formData.phone.trim();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name.trim() || !formData.email.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       toast.error('Please fill in all fields');
       return;
     }
@@ -47,6 +47,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
       const webhookData = {
         name: formData.name.trim(),
         email: formData.email.trim(),
+        phone: formData.phone.trim(),
         timestamp: new Date().toISOString(),
         source: 'RAC Immigration Website'
       };
@@ -67,7 +68,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
       // With no-cors mode, we can't read the response status
       // Assume success if no error was thrown
       toast.success('Thank you! We will contact you soon.');
-      setFormData({ name: '', email: '', address: '' });
+      setFormData({ name: '', email: '', phone: '' });
       onClose();
       
       // Redirect to thank you page
@@ -94,7 +95,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
   };
 
   const handleClose = () => {
-    setFormData({ name: '', email: '', address: '' });
+    setFormData({ name: '', email: '', phone: '' });
     onClose();
   };
 
@@ -168,6 +169,23 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
                 </div>
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number *
+                </label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
+              </div>
+
               <div className="bg-gold-primary/10 rounded-lg p-4">
                 <p className="text-sm text-gray-700">
                   <strong>Next Steps:</strong> After submitting, we'll contact you within 24 hours to schedule your free consultation and discuss your immigration options.
@@ -176,7 +194,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormValid}
                 className="w-full bg-navy-primary text-white py-3 rounded-lg font-medium hover:bg-navy-secondary transition-colors duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
