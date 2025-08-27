@@ -19,8 +19,8 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
   ];
 
   const footerLinks = [
-    { text: t.footer.privacy, href: '#' },
-    { text: t.footer.terms, href: '#' },
+    { text: t.footer.privacy, href: '/privacy' },
+    { text: t.footer.terms, href: '/terms' },
     { text: t.footer.contact, href: '#footer' }
   ];
 
@@ -51,11 +51,11 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gold-primary" />
-                <span>info@racimmigration.com</span>
+                <span>ybalina@racimmigration.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gold-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 416-804-7771</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-gold-primary mt-1" />

@@ -18,10 +18,10 @@ const AboutUs: React.FC = () => {
       image: "/image/RAC.jpg" // Using existing image
     },
     {
-      name: "Oleksii Dzhura",
-      title: "Assistant to the Consultant",
-      description: "Since 2017, Oleksii has steered our clients through their very first steps toward Canada. He excels at breaking down complex immigration topics into clear, simple guidance so every applicant feels confident from day one.",
-      image: "https://i.ibb.co/5xF5bx6w/Oleksii-Dzhura.jpg" // Oleksii's photo
+      name: "Vita Galiniak (Shubert)",
+      title: "Immigration Case Specialist & Co-Founder, MV Group",
+      description: "A seasoned consultant since 2006 and philology graduate, Vita brings unmatched expertise in work, study, visitor, PR, and citizenship applications. Partnering with Yuliya since 2006, she's driven by integrity and a passion for client success.",
+      image: "https://i.ibb.co/PZ5wgL7g/Vita-Galiniak-1.jpg"
     },
     {
       name: "Mykola Galiniak",
@@ -30,10 +30,10 @@ const AboutUs: React.FC = () => {
       image: "https://i.ibb.co/w3wkzw7/Mykola-Galiniak.jpg" // Mykola's photo
     },
     {
-      name: "Vita Galiniak (Shubert)",
-      title: "Immigration Case Specialist & Co-Founder, MV Group",
-      description: "A seasoned consultant since 2006 and philology graduate, Vita brings unmatched expertise in work, study, visitor, PR, and citizenship applications. Partnering with Yuliya since 2006, she's driven by integrity and a passion for client success.",
-      image: "https://i.ibb.co/PZ5wgL7g/Vita-Galiniak-1.jpg"
+      name: "Oleksii Dzhura",
+      title: "Assistant to the Consultant",
+      description: "Since 2017, Oleksii has steered our clients through their very first steps toward Canada. He excels at breaking down complex immigration topics into clear, simple guidance so every applicant feels confident from day one.",
+      image: "https://i.ibb.co/5xF5bx6w/Oleksii-Dzhura.jpg" // Oleksii's photo
     },
     {
       name: "Tetiana Fallaha",
@@ -52,11 +52,21 @@ const AboutUs: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-navy-primary text-white py-16">
+      <div className="bg-navy-primary text-white py-16 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://i.ibb.co/Fk2c3x78/on-arrival-visas-post.jpg"
+            alt="Immigration services background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy-primary/85"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <button
             onClick={() => navigate('/')}
-            className="flex items-center text-gold-primary hover:text-white transition-colors mb-6"
+            className="flex items-center text-gold-primary hover:text-white transition-colors mb-6 relative z-10"
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to Home
@@ -66,7 +76,7 @@ const AboutUs: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="text-center relative z-10"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">
               Meet Our Team
@@ -164,11 +174,11 @@ const AboutUs: React.FC = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gold-primary" />
-                <span>info@racimmigration.com</span>
+                <span>ybalina@racimmigration.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gold-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 416-804-7771</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-gold-primary" />

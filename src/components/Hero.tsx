@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 import { translations } from '../utils/translations';
+import ContactModal from './ContactModal';
 
 type Language = 'en' | 'uk' | 'ru';
 
@@ -11,6 +12,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
   const t = translations[currentLanguage];
+  const [showContactModal, setShowContactModal] = React.useState(false);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -82,8 +84,8 @@ const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
                 boxShadow: "0 0 25px rgba(193, 157, 83, 0.5)"
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => setShowContactModal(true)}
               className="bg-gold-primary text-navy-primary px-8 py-4 rounded-lg font-bold text-lg border-4 border-white/20 shadow-2xl hover:border-white/40 transition-all duration-300 flex items-center mx-auto space-x-3"
-             
             >
               <Calendar className="w-6 h-6" />
               <span>{t.hero.cta}</span>
@@ -111,6 +113,12 @@ const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
           />
         </motion.div>
       </motion.div>
+
+      <ContactModal 
+        isOpen={showContactModal}
+        onClose={() => setShowContactModal(false)}
+        title="Schedule Free Consultation"
+      />
     </section>
   );
 };

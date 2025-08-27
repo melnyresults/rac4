@@ -20,6 +20,8 @@ import BlogList from './components/BlogList';
 import BlogPost from './components/BlogPost';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 // About Us Component
 import AboutUs from './components/AboutUs';
@@ -120,6 +122,8 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminRoute />} />

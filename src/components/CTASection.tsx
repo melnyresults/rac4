@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Calendar, MessageCircle, CheckCircle } from 'lucide-react';
 import { translations } from '../utils/translations';
+import ContactModal from './ContactModal';
 
 type Language = 'en' | 'uk' | 'ru';
 
@@ -15,6 +16,7 @@ const CTASection: React.FC<CTASectionProps> = ({ currentLanguage }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const t = translations[currentLanguage];
+  const [showContactModal, setShowContactModal] = React.useState(false);
 
   const benefits = [
     t.cta.benefits[0],
@@ -94,6 +96,7 @@ const CTASection: React.FC<CTASectionProps> = ({ currentLanguage }) => {
               boxShadow: "0 0 30px rgba(193, 157, 83, 0.5)"
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setShowContactModal(true)}
             className="bg-gold-primary text-navy-primary px-8 py-4 rounded-lg font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center mx-auto sm:mx-0 space-x-3"
           >
             <Calendar className="w-6 h-6" />
@@ -103,6 +106,7 @@ const CTASection: React.FC<CTASectionProps> = ({ currentLanguage }) => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => setShowContactModal(true)}
             className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-navy-primary transition-all duration-300 flex items-center mx-auto sm:mx-0 space-x-3"
           >
             <MessageCircle className="w-6 h-6" />
@@ -110,6 +114,12 @@ const CTASection: React.FC<CTASectionProps> = ({ currentLanguage }) => {
           </motion.button>
         </motion.div>
       </div>
+
+      <ContactModal 
+        isOpen={showContactModal}
+        onClose={() => setShowContactModal(false)}
+        title="Get Started Today"
+      />
     </section>
   );
 };
