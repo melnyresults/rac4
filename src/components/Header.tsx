@@ -89,26 +89,19 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Moved to far left */}
+          {/* Company Name */}
           <div className="flex-shrink-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-2"
+              className="text-white"
             >
-              <img
-                src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
-                alt="RAC Immigration Logo"
-                className="h-28 w-auto"
-              />
-              <div className="text-white">
-                <div className="font-bold text-lg leading-tight">RAC Immigration Services</div>
-                <div className="text-xs text-gold-primary">RCIC #R506278</div>
-              </div>
+              <div className="font-bold text-xl leading-tight">RAC Immigration Services</div>
+              <div className="text-sm text-gold-primary">RCIC #R506278</div>
             </motion.div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 ml-8">
+          <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.key}

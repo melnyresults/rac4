@@ -31,16 +31,9 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
         <div className="py-12 grid md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <img
-                src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
-                alt="RAC Immigration Logo"
-                className="h-32 w-auto"
-              />
-              <div>
-                <div className="font-bold text-lg">RAC Immigration</div>
-                <div className="text-gold-primary text-sm">RCIC #R506278</div>
-              </div>
+            <div>
+              <div className="font-bold text-xl text-white mb-2">RAC Immigration Services</div>
+              <div className="text-gold-primary text-sm">RCIC #R506278</div>
             </div>
             <p className="text-white/80 leading-relaxed">
               {t.footer.description}
