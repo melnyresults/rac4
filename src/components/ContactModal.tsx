@@ -41,9 +41,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
     setIsSubmitting(true);
     
     try {
-      // Submit to Zapier webhook
+      // Submit to Zapier webhook with timeout and better error handling
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+      
       const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
         method: 'POST',
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -53,18 +57,32 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
           source: 'RAC Immigration Website',
           timestamp: new Date().toISOString()
         }),
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
 
       if (response.ok) {
         toast.success('Thank you! We will contact you soon.');
         setFormData({ name: '', email: '', address: '' });
         onClose();
       } else {
-        throw new Error('Failed to submit form');
+        throw new Error(`Server responded with status: ${response.status}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      toast.error('Something went wrong. Please try again or contact us directly.');
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          toast.error('Request timed out. Please check your internet connection and try again.');
+        } else if (error.message.includes('Failed to fetch')) {
+          toast.error('Network error. Please check your internet connection or try again later.');
+        } else {
+          toast.error(`Submission failed: ${error.message}`);
+        }
+      } else {
+        toast.error('Something went wrong. Please try again or contact us directly.');
+      }
     } finally {
       setIsSubmitting(false);
     }
