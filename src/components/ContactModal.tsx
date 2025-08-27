@@ -130,16 +130,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Address *
+                  Email Address *
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
-                    type="text"
-                    value={formData.address}
-                    onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent"
-                    placeholder="Enter your current address"
+                    placeholder="Enter your email address"
                     required
                   />
                 </div>
