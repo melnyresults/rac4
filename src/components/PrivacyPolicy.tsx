@@ -9,8 +9,9 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Meta Tags */}
-      <title>Privacy Policy - RAC Immigration Services</title>
-      <meta name="description" content="Privacy policy for RAC Immigration Services. Learn how we protect your personal information and data during the immigration process." />
+      <title>Privacy Policy - RAC Immigration | Canada Immigration Agency</title>
+      <meta name="description" content="Privacy policy for RAC Immigration - Leading Canada Immigration Agency. Learn how we protect your personal information and data during the Canadian immigration process." />
+      <meta name="keywords" content="Canada Immigration Agency privacy, RAC Immigration privacy policy, immigration data protection, RCIC privacy standards" />
       <meta name="robots" content="index, follow" />
 
       {/* Header */}

@@ -9,8 +9,10 @@ const ThankYou: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-navy-primary to-navy-secondary flex items-center justify-center px-4">
       {/* SEO Meta Tags */}
-      <title>Thank You - RAC Immigration Services</title>
-      <meta name="description" content="Thank you for contacting RAC Immigration Services. We'll be in touch soon to discuss your Canadian immigration journey." />
+      <title>Thank You - RAC Immigration | Canada Immigration Agency</title>
+      <meta name="description" content="Thank you for contacting RAC Immigration - Leading Canada Immigration Agency. We'll be in touch soon to discuss your Canadian immigration journey with RCIC Yuliya Balina." />
+      <meta name="keywords" content="Canada Immigration Agency contact, RAC Immigration thank you, immigration consultation booked, Yuliya Balina consultation" />
+      <meta name="robots" content="noindex, follow" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 20 }}

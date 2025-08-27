@@ -90,12 +90,13 @@ const BlogPost: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Meta Tags */}
-      <title>{post.title} - RAC Immigration Blog</title>
-      <meta name="description" content={post.excerpt} />
-      <meta name="keywords" content={post.tags.join(', ')} />
+      <title>{post.title} - RAC Immigration | Canada Immigration Agency</title>
+      <meta name="description" content={`${post.excerpt} - Expert advice from RAC Immigration, leading Canada Immigration Agency.`} />
+      <meta name="keywords" content={`${post.tags.join(', ')}, Canada Immigration Agency, RAC Immigration, immigration consultant canada`} />
       <meta name="author" content={post.author} />
+      <meta name="robots" content="index, follow, max-image-preview:large" />
       <meta property="og:title" content={post.title} />
-      <meta property="og:description" content={post.excerpt} />
+      <meta property="og:description" content={`${post.excerpt} - Expert advice from RAC Immigration, leading Canada Immigration Agency.`} />
       <meta property="og:type" content="article" />
       {post.featuredImage && <meta property="og:image" content={post.featuredImage} />}
 

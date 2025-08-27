@@ -31,9 +31,9 @@ type Language = 'en' | 'uk' | 'ru';
 
 // SEO Component for dynamic meta tags
 const SEOHead: React.FC<{ title?: string; description?: string; keywords?: string }> = ({ 
-  title = "RAC Immigration - Yuliya Balina | Making Immigration Human Again",
-  description = "Certified immigration consultant Yuliya Balina with 19+ years of experience helping skilled professionals immigrate to Canada. RCIC #R506278. Free consultation available.",
-  keywords = "immigration canada, immigration consultant, RCIC, express entry, provincial nominee, work visa, study visa, permanent residence"
+  title = "RAC Immigration | Yuliya Balina - Leading Canada Immigration Agency",
+  description = "RAC Immigration - Leading Canada Immigration Agency with RCIC Yuliya Balina. 19+ years helping skilled professionals immigrate to Canada through Express Entry, PNP, work visas. Free consultation available.",
+  keywords = "Canada Immigration Agency, RAC Immigration, immigration consultant canada, RCIC, Yuliya Balina, express entry canada, provincial nominee program, work visa canada, study visa canada, permanent residence canada, immigration services toronto"
 }) => {
   React.useEffect(() => {
     document.title = title;

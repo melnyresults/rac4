@@ -35,8 +35,9 @@ const BlogList: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Meta Tags */}
-      <title>Immigration Blog - RAC Immigration Services</title>
-      <meta name="description" content="Expert immigration insights, updates, and guidance for your Canadian immigration journey. Latest news on Express Entry, PNP, and more." />
+      <title>Immigration Blog - RAC Immigration | Canada Immigration Agency</title>
+      <meta name="description" content="Expert immigration insights from RAC Immigration - Leading Canada Immigration Agency. Latest updates on Express Entry, Provincial Nominee Programs, work visas, and Canadian immigration guidance." />
+      <meta name="keywords" content="Canada Immigration Agency blog, immigration news canada, express entry updates, provincial nominee program news, work visa canada, immigration tips, RAC Immigration blog" />
 
       {/* Header */}
       <div className="bg-navy-primary text-white py-16">

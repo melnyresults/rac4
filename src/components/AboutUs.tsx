@@ -187,8 +187,10 @@ const AboutUs: React.FC = () => {
       </motion.header>
 
       {/* SEO Meta Tags */}
-      <title>About Our Team - RAC Immigration Services</title>
-      <meta name="description" content="Meet our experienced immigration team led by Yuliya Balina (RCIC #R506278). 19+ years helping skilled professionals immigrate to Canada." />
+      <title>About Our Team - RAC Immigration | Leading Canada Immigration Agency</title>
+      <meta name="description" content="Meet our experienced Canada Immigration Agency team led by Yuliya Balina (RCIC #R506278). RAC Immigration - 19+ years helping skilled professionals immigrate to Canada through Express Entry, PNP, work visas." />
+      <meta name="keywords" content="Canada Immigration Agency team, Yuliya Balina RCIC, RAC Immigration about, immigration consultant team toronto, experienced immigration lawyers canada" />
+      <meta name="robots" content="index, follow, max-image-preview:large" />
 
       {/* Header */}
       <div className="bg-navy-primary text-white py-16 mt-16">

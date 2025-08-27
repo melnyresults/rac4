@@ -9,8 +9,9 @@ const TermsOfService: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Meta Tags */}
-      <title>Terms of Service - RAC Immigration Services</title>
-      <meta name="description" content="Terms of service for RAC Immigration Services. Professional immigration consulting terms and conditions for Canadian immigration services." />
+      <title>Terms of Service - RAC Immigration | Canada Immigration Agency</title>
+      <meta name="description" content="Terms of service for RAC Immigration - Leading Canada Immigration Agency. Professional immigration consulting terms and conditions for Canadian immigration services with RCIC Yuliya Balina." />
+      <meta name="keywords" content="Canada Immigration Agency terms, RAC Immigration terms of service, immigration consultant terms, RCIC service agreement" />
       <meta name="robots" content="index, follow" />
 
       {/* Header */}
