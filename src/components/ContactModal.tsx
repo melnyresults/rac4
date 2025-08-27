@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, MapPin, Send } from 'lucide-react';
+import { X, User, Mail, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface ContactModalProps {
@@ -12,35 +12,106 @@ interface ContactModalProps {
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "Get In Touch" }) => {
   const [formData, setFormData] = useState({
     name: '',
-    address: ''
+    email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name.trim() || !formData.address.trim()) {
+    if (!formData.name.trim() || !formData.email.trim()) {
       toast.error('Please fill in all fields');
       return;
     }
 
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      toast.success('Thank you! We will contact you soon.');
-      setFormData({ name: '', address: '' });
-      onClose();
+      // Submit to Zapier webhook
+      const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          source: 'RAC Immigration Website',
+          timestamp: new Date().toISOString()
+        }),
+      });
+
+      if (response.ok) {
+        toast.success('Thank you! We will contact you soon.');
+        setFormData({ name: '', email: '' });
+      } else {
+        throw new Error('Failed to submit form');
+      }
     } catch (error) {
-      toast.error('Something went wrong. Please try again.');
+      console.error('Form submission error:', error);
+      toast.error('Something went wrong. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleClose = () => {
-    setFormData({ name: '', address: '' });
+    setFormData({ name: '', email: '' });
+    onClose();
+  };
+
+  // Email validation
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isFormValid = formData.name.trim() && formData.email.trim() && isValidEmail(formData.email);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim()) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (!isValidEmail(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Submit to Zapier webhook
+      const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          source: 'RAC Immigration Website',
+          timestamp: new Date().toISOString()
+        }),
+      });
+
+      if (response.ok) {
+        toast.success('Thank you! We will contact you soon.');
+        setFormData({ name: '', email: '' });
+      onClose();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleClose = () => {
+    setFormData({ name: '', email: '' });
     onClose();
   };
 
@@ -99,16 +170,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Address *
+                  Email Address *
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
-                    type="text"
-                    value={formData.address}
-                    onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent"
-                    placeholder="Enter your current address"
+                    placeholder="Enter your email address"
                     required
                   />
                 </div>
@@ -122,7 +193,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormValid}
                 className="w-full bg-navy-primary text-white py-3 rounded-lg font-medium hover:bg-navy-secondary transition-colors duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
