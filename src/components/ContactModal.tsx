@@ -41,48 +41,31 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
     setIsSubmitting(true);
     
     try {
-      // Submit to Zapier webhook with timeout and better error handling
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-      
+      // Submit to Zapier raw webhook
+      const webhookData = {
+        name: formData.name.trim(),
+        email: formData.email.trim()
+      };
+
       const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
         method: 'POST',
-        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          source: 'RAC Immigration Website',
-          timestamp: new Date().toISOString()
-        }),
-        signal: controller.signal
+        body: JSON.stringify(webhookData)
       });
-      
-      clearTimeout(timeoutId);
 
-      if (response.ok) {
+      // Zapier webhooks typically return 200 even for successful submissions
+      if (response.status === 200 || response.status === 201) {
         toast.success('Thank you! We will contact you soon.');
         setFormData({ name: '', email: '', address: '' });
         onClose();
       } else {
-        throw new Error(`Server responded with status: ${response.status}`);
+        throw new Error(`Webhook returned status: ${response.status}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          toast.error('Request timed out. Please check your internet connection and try again.');
-        } else if (error.message.includes('Failed to fetch')) {
-          toast.error('Network error. Please check your internet connection or try again later.');
-        } else {
-          toast.error(`Submission failed: ${error.message}`);
-        }
-      } else {
-        toast.error('Something went wrong. Please try again or contact us directly.');
-      }
+      toast.error('Unable to submit form. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
