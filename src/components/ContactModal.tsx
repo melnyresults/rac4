@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, MapPin, Send, Mail } from 'lucide-react';
+import { X, User, MapPin, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface ContactModalProps {
@@ -12,7 +12,8 @@ interface ContactModalProps {
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "Get In Touch" }) => {
   const [formData, setFormData] = useState({
     name: '',
-    email: ''
+    email: '',
+    address: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -56,7 +57,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
       if (response.ok) {
         toast.success('Thank you! We will contact you soon.');
-        setFormData({ name: '', email: '' });
+        setFormData({ name: '', email: '', address: '' });
         onClose();
       } else {
         throw new Error('Failed to submit form');
@@ -70,7 +71,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
   };
 
   const handleClose = () => {
-    setFormData({ name: '', email: '' });
+    setFormData({ name: '', email: '', address: '' });
     onClose();
   };
 
@@ -129,16 +130,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
+                  Address *
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <MapPin className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
                   <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    type="text"
+                    value={formData.address}
+                    onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-primary focus:border-transparent"
-                    placeholder="Enter your email address"
+                    placeholder="Enter your current address"
                     required
                   />
                 </div>
