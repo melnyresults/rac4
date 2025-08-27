@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Mail, Send } from 'lucide-react';
+import { X, User, MapPin, Send, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface ContactModalProps {
@@ -15,50 +15,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
     email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.email.trim()) {
-      toast.error('Please fill in all fields');
-      return;
-    }
-
-    setIsSubmitting(true);
-    
-    try {
-      // Submit to Zapier webhook
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/19293386/uhu9jmq/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          source: 'RAC Immigration Website',
-          timestamp: new Date().toISOString()
-        }),
-      });
-
-      if (response.ok) {
-        toast.success('Thank you! We will contact you soon.');
-        setFormData({ name: '', email: '' });
-      } else {
-        throw new Error('Failed to submit form');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      toast.error('Something went wrong. Please try again or contact us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleClose = () => {
-    setFormData({ name: '', email: '' });
-    onClose();
-  };
 
   // Email validation
   const isValidEmail = (email: string) => {
@@ -101,7 +57,10 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
       if (response.ok) {
         toast.success('Thank you! We will contact you soon.');
         setFormData({ name: '', email: '' });
-      onClose();
+        onClose();
+      } else {
+        throw new Error('Failed to submit form');
+      }
     } catch (error) {
       console.error('Form submission error:', error);
       toast.error('Something went wrong. Please try again or contact us directly.');
@@ -193,7 +152,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
 
               <button
                 type="submit"
-                disabled={isSubmitting || !isFormValid}
+                disabled={isSubmitting}
                 className="w-full bg-navy-primary text-white py-3 rounded-lg font-medium hover:bg-navy-secondary transition-colors duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
