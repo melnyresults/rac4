@@ -84,7 +84,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden max-h-[90vh] overflow-y-auto"
           >
             {/* Header */}
             <div className="bg-navy-primary text-white p-6 relative">
