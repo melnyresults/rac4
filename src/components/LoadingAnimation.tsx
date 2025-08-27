@@ -30,7 +30,7 @@ const LoadingAnimation: React.FC = () => {
             />
           </motion.div>
         </div>
-        
+      <div className="w-80 h-80 rounded-full border-4 border-gold-primary bg-white flex items-center justify-center shadow-2xl p-8">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
