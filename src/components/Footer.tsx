@@ -35,7 +35,7 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
               <img
                 src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
                 alt="RAC Immigration Logo"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
               <div>
                 <div className="font-bold text-lg">RAC Immigration</div>

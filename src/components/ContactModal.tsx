@@ -64,8 +64,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, title = "G
                 <X className="w-6 h-6" />
               </button>
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gold-primary rounded-full flex items-center justify-center">
-                  <span className="text-navy-primary font-bold">RAC</span>
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2">
+                  <img
+                    src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
+                    alt="RAC Immigration Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold">{title}</h2>

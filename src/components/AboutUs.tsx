@@ -91,7 +91,7 @@ const AboutUs: React.FC = () => {
                 <img
                   src="https://i.ibb.co/Csb2gT8X/Untitled-design-3.png"
                   alt="RAC Immigration Logo"
-                  className="h-10 w-auto"
+                  className="h-14 w-auto"
                 />
                 <div className="text-white">
                   <div className="font-bold text-lg leading-tight">RAC Immigration Services</div>
@@ -330,6 +330,7 @@ const AboutUs: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = 'mailto:ybalina@racimmigration.com?subject=Immigration Consultation Inquiry'}
               className="bg-gold-primary text-navy-primary px-8 py-4 rounded-lg font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300"
             >
               Schedule Your Free Consultation
