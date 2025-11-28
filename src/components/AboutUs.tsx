@@ -20,7 +20,7 @@ const AboutUs: React.FC = () => {
     { key: 'home', href: '/' },
     { key: 'about', href: '/about-us' },
     { key: 'services', href: '/#services' },
-    { key: 'blog', href: '/#testimonials' },
+    { key: 'testimonials', href: '/#testimonials' },
     { key: 'contact', href: '/#footer' }
   ];
 
@@ -149,7 +149,7 @@ const AboutUs: React.FC = () => {
               <div className="py-4 space-y-4">
                 {navItems.map((item) => (
                   <a
-                className="h-28 w-auto"
+                    key={item.key}
                     href={item.href}
                     className={`block transition-colors font-medium px-4 py-2 ${
                       item.key === 'about'

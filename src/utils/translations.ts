@@ -4,7 +4,7 @@ export const translations = {
       home: 'Home',
       about: 'About',
       services: 'Services',
-      blog: 'Blog',
+      testimonials: 'Testimonials',
       contact: 'Contact'
     },
     hero: {
@@ -122,7 +122,7 @@ export const translations = {
       home: 'Головна',
       about: 'Про мене',
       services: 'Послуги',
-      blog: 'Блог',
+      testimonials: 'Відгуки',
       contact: 'Контакти'
     },
     hero: {
@@ -240,7 +240,7 @@ export const translations = {
       home: 'Главная',
       about: 'Обо мне',
       services: 'Услуги',
-      blog: 'Блог',
+      testimonials: 'Отзывы',
       contact: 'Контакты'
     },
     hero: {

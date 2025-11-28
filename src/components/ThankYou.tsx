@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight, Home, BookOpen, Calendar } from 'lucide-react';
+import { CheckCircle, ArrowRight, Home, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const ThankYou: React.FC = () => {
@@ -66,37 +66,27 @@ const ThankYou: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate('/blog')}
-              className="bg-gold-primary text-navy-primary px-6 py-3 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
-            >
-              <BookOpen className="w-5 h-5" />
-              <span>Read Our Immigration Blog</span>
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/')}
-              className="border-2 border-navy-primary text-navy-primary px-6 py-3 rounded-lg font-bold text-lg hover:bg-navy-primary hover:text-white transition-all duration-300 flex items-center justify-center space-x-2"
+              className="bg-gold-primary text-navy-primary px-6 py-3 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
             >
               <Home className="w-5 h-5" />
               <span>Back to Home</span>
             </motion.button>
           </div>
 
-          {/* Blog Preview */}
+          {/* Services Preview */}
           <div className="border-t border-gray-200 pt-6">
             <h3 className="text-lg font-semibold text-navy-primary mb-3">
-              While You Wait, Explore Our Latest Insights
+              Learn More About Our Services
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 text-left">
               <div className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors cursor-pointer"
-                   onClick={() => navigate('/blog')}>
-                <h4 className="font-medium text-navy-primary mb-2">Express Entry Updates 2024</h4>
-                <p className="text-sm text-gray-600">Latest changes and opportunities in Canada's Express Entry system.</p>
+                   onClick={() => navigate('/#services')}>
+                <h4 className="font-medium text-navy-primary mb-2">Express Entry</h4>
+                <p className="text-sm text-gray-600">Fast-track your immigration to Canada through Express Entry system.</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors cursor-pointer"
-                   onClick={() => navigate('/blog')}>
+                   onClick={() => navigate('/#services')}>
                 <h4 className="font-medium text-navy-primary mb-2">Provincial Nominee Programs</h4>
                 <p className="text-sm text-gray-600">Find the best PNP pathway for your skills and experience.</p>
               </div>

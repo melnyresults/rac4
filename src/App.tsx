@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
-import { BlogProvider, useBlog } from './contexts/BlogContext';
 
 // Components
 import Header from './components/Header';
@@ -11,15 +10,10 @@ import WhoIAm from './components/WhoIAm';
 import WhatIDo from './components/WhatIDo';
 import WhyItMatters from './components/WhyItMatters';
 import RealSuccess from './components/RealSuccess';
-import Blog from './components/Blog';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
 import LoadingAnimation from './components/LoadingAnimation';
-import BlogList from './components/BlogList';
-import BlogPost from './components/BlogPost';
-import AdminLogin from './components/AdminLogin';
-import AdminDashboard from './components/AdminDashboard';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import ThankYou from './components/ThankYou';
@@ -83,7 +77,6 @@ const HomePage: React.FC<{ currentLanguage: Language; setCurrentLanguage: (lang:
         <WhatIDo currentLanguage={currentLanguage} />
         <WhyItMatters currentLanguage={currentLanguage} />
         <RealSuccess currentLanguage={currentLanguage} />
-        <Blog currentLanguage={currentLanguage} />
         <CTASection currentLanguage={currentLanguage} />
       </motion.main>
 
@@ -94,12 +87,6 @@ const HomePage: React.FC<{ currentLanguage: Language; setCurrentLanguage: (lang:
       </AnimatePresence>
     </>
   );
-};
-
-// Admin Route Component
-const AdminRoute: React.FC = () => {
-  const { isAdmin } = useBlog();
-  return isAdmin ? <AdminDashboard /> : <AdminLogin />;
 };
 
 function App() {
@@ -120,45 +107,38 @@ function App() {
   }
 
   return (
-    <BlogProvider>
-      <Router>
-        <div className="min-h-screen bg-white">
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#002c5f',
+              color: '#fff',
+            },
+            success: {
               style: {
-                background: '#002c5f',
-                color: '#fff',
+                background: '#c19d53',
+                color: '#002c5f',
               },
-              success: {
-                style: {
-                  background: '#c19d53',
-                  color: '#002c5f',
-                },
-              },
-            }}
+            },
+          }}
+        />
+
+        <Routes>
+          {/* Public Routes */}
+          <Route
+            path="/"
+            element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />}
           />
-          
-          <Routes>
-            {/* Public Routes */}
-            <Route 
-              path="/" 
-              element={<HomePage currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />} 
-            />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/blog" element={<BlogList />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsOfService />} />
-            <Route path="/thanks" element={<ThankYou />} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin" element={<AdminRoute />} />
-          </Routes>
-        </div>
-      </Router>
-    </BlogProvider>
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/thanks" element={<ThankYou />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

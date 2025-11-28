@@ -19,8 +19,8 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
     { key: 'home', href: '#home' },
     { key: 'about', href: '/about-us' },
     { key: 'services', href: '#services' },
-    { key: 'blog', href: '#testimonials' }, // Changed to point to testimonials section
-    { key: 'contact', href: '#footer' } // Changed to point to footer section
+    { key: 'testimonials', href: '#testimonials' },
+    { key: 'contact', href: '#footer' }
   ];
 
   const languages = [
@@ -52,27 +52,22 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
 
   // Обработчик клика по пункту меню
   const handleNavClick = (key: string, href: string) => {
-    // Special handling for about, blog and contact links
+    // Special handling for about link
     if (key === 'about') {
       // Navigate to about-us page instead of scrolling
       window.location.href = href;
       return;
-    } else if (key === 'blog') {
-      setActiveSection('testimonials');
-    } else if (key === 'contact') {
-      setActiveSection('footer');
-    } else {
-      setActiveSection(key);
     }
+
+    setActiveSection(key);
     setIsMenuOpen(false);
-    
-    // Smooth scroll to section with custom offset for About section
+
+    // Smooth scroll to section
     const element = document.querySelector(href);
     if (element) {
       const headerHeight = 64; // Height of fixed header
-      const extraOffset = key === 'about' ? -10 : 0; // Negative offset to scroll lower for About section (10px gap from EXPERT badge)
-      const elementPosition = element.offsetTop - headerHeight - extraOffset;
-      
+      const elementPosition = element.offsetTop - headerHeight;
+
       window.scrollTo({
         top: elementPosition,
         behavior: 'smooth'
@@ -108,9 +103,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
                 href={item.href}
                 whileHover={{ y: -2 }}
                 className={`transition-colors font-medium ${
-                  (activeSection === item.key) || 
-                  (item.key === 'blog' && activeSection === 'testimonials') ||
-                  (item.key === 'contact' && activeSection === 'footer')
+                  activeSection === item.key
                     ? 'text-gold-primary border-b-2 border-gold-primary'
                     : 'text-white hover:text-gold-primary'
                 }`}
@@ -166,9 +159,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, setCurrentLanguage }) 
                   key={item.key}
                   href={item.href}
                   className={`block transition-colors font-medium px-4 py-2 ${
-                    (activeSection === item.key) || 
-                    (item.key === 'blog' && activeSection === 'testimonials') ||
-                    (item.key === 'contact' && activeSection === 'footer')
+                    activeSection === item.key
                       ? 'text-gold-primary bg-gold-primary/10'
                       : 'text-white hover:text-gold-primary'
                   }`}

@@ -73,7 +73,7 @@ const PrivacyPolicy: React.FC = () => {
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
                   <li>Request a consultation or contact us through our website</li>
                   <li>Fill out forms or questionnaires</li>
-                  <li>Subscribe to our newsletter or blog updates</li>
+                  <li>Subscribe to our newsletter</li>
                   <li>Engage with our services</li>
                 </ul>
                 <p className="text-gray-700">
